@@ -47,6 +47,7 @@ def loadEntry  () :
 def makeWindow () :
     global nameVar, priceVar, productVar, select
     win = Tk()
+    win.wm_title("Product Stock")
 
     frame1 = Frame(win)
     frame1.pack()
