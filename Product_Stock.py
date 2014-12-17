@@ -1,5 +1,5 @@
 from Tkinter import *
-from phone  import *
+from product  import *
 #import tkFont
 #Git-HUB
 #helv36 = tkFont.Font(family="Helvetica",size=36,weight="bold")
@@ -8,43 +8,43 @@ def fun(xxx):
     return len(xxx[0])
 
 def maxlist():
-    return len(max(phonelist, key = fun)[0])
+    return len(max(productlist, key = fun)[0])
 
 print maxlist()
 
 def writedata():
-    f = open("phone.py", "w")
-    f.write("phonelist = " + str(phonelist))
+    f = open("product.py", "w")
+    f.write("productlist = " + str(productlist))
     f.close()
     
 def whichSelected () :
-    #print phonelist[select.curselection()[0]][0]
-    print "At %s of %d" % (select.curselection(), len(phonelist))
+    #print productlist[select.curselection()[0]][0]
+    print "At %s of %d" % (select.curselection(), len(productlist))
     print nameVar.get()
     return int(select.curselection()[0])
 
 def addEntry () :
-    phonelist.append ([nameVar.get(), phoneVar.get()])
+    productlist.append ([nameVar.get(), productVar.get()])
     setSelect ()
     writedata()
 
 def updateEntry() :
-    phonelist[whichSelected()] = [nameVar.get(), phoneVar.get()]
+    productlist[whichSelected()] = [nameVar.get(), productVar.get()]
     setSelect ()
     writedata()
 
 def deleteEntry() :
-    del phonelist[whichSelected()]
+    del productlist[whichSelected()]
     setSelect ()
     writedata()
 
 def loadEntry  () :
-    name, phone = phonelist[whichSelected()]
+    name, product = productlist[whichSelected()]
     nameVar.set(name)
-    phoneVar.set(phone)
+    productVar.set(product)
 
 def makeWindow () :
-    global nameVar, phoneVar, select
+    global nameVar, productVar, select
     win = Tk()
 
     frame1 = Frame(win)
@@ -57,14 +57,14 @@ def makeWindow () :
     
 
     Label(frame1, text="Price").grid(row=1, column=0, sticky=W)
-    phoneVar= StringVar()
-    phone= Entry(frame1, textvariable=phoneVar)
-    phone.grid(row=1, column=1, sticky=W)
+    productVar= StringVar()
+    product= Entry(frame1, textvariable=productVar)
+    product.grid(row=1, column=1, sticky=W)
     
     Label(frame1, text="Quantity").grid(row=2, column=0, sticky=W)
-    phoneVar= StringVar()
-    phone= Entry(frame1, textvariable=phoneVar)
-    phone.grid(row=2, column=1, sticky=W)
+    productVar= StringVar()
+    product= Entry(frame1, textvariable=productVar)
+    product.grid(row=2, column=1, sticky=W)
 
     frame2 = Frame(win)       # Row of buttons
     frame2.pack()
@@ -86,9 +86,9 @@ def makeWindow () :
 
 def setSelect () :
     space = maxlist()
-    phonelist.sort()
+    productlist.sort()
     select.delete(0,END)
-    for name,phone in phonelist :
+    for name,product in productlist :
         select.insert (END, name)
         #print (END, name)
 
