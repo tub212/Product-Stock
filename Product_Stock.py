@@ -19,17 +19,17 @@ def writedata():
     
 def whichSelected () :
     #print productlist[select.curselection()[0]][0]
-    print "At %s of %d" % (select.curselection(), len(productlist))
-    print nameVar.get()
+    #print "At %s of %d" % (select.curselection(), len(productlist))
+    #print nameVar.get()
     return int(select.curselection()[0])
 
 def addEntry () :
-    productlist.append ([nameVar.get(), productVar.get()])
+    productlist.append ([nameVar.get(), priceVar.get(), productVar.get()])
     setSelect ()
     writedata()
 
 def updateEntry() :
-    productlist[whichSelected()] = [nameVar.get(), productVar.get()]
+    productlist[whichSelected()] = [nameVar.get(), priceVar.get(), productVar.get()]
     setSelect ()
     writedata()
 
@@ -39,12 +39,13 @@ def deleteEntry() :
     writedata()
 
 def loadEntry  () :
-    name, product = productlist[whichSelected()]
+    name, price, product = productlist[whichSelected()]
     nameVar.set(name)
+    priceVar.set(price)
     productVar.set(product)
 
 def makeWindow () :
-    global nameVar, productVar, select
+    global nameVar, priceVar, productVar, select
     win = Tk()
 
     frame1 = Frame(win)
@@ -57,8 +58,8 @@ def makeWindow () :
     
 
     Label(frame1, text="Price").grid(row=1, column=0, sticky=W)
-    productVar= StringVar()
-    product= Entry(frame1, textvariable=productVar)
+    priceVar= StringVar()
+    product= Entry(frame1, textvariable=priceVar)
     product.grid(row=1, column=1, sticky=W)
     
     Label(frame1, text="Quantity").grid(row=2, column=0, sticky=W)
@@ -88,7 +89,7 @@ def setSelect () :
     space = maxlist()
     productlist.sort()
     select.delete(0,END)
-    for name,product in productlist :
+    for name,price,product in productlist :
         select.insert (END, name)
         #print (END, name)
 
