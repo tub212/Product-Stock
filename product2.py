@@ -1,1 +1,0 @@
-productlist = [['Dotrios', '200', '32'], ['Lays', '30', '50'], ['Party', '20', '32']]
