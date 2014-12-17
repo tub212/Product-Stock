@@ -18,7 +18,7 @@ def writedata():
     f.close()
     
 def whichSelected () :
-    print phonelist[select.curselection()[0]][0]
+    #print phonelist[select.curselection()[0]][0]
     print "At %s of %d" % (select.curselection(), len(phonelist))
     print nameVar.get()
     return int(select.curselection()[0])
@@ -50,16 +50,21 @@ def makeWindow () :
     frame1 = Frame(win)
     frame1.pack()
 
-    Label(frame1, text="Name").grid(row=0, column=0, sticky=W)
+    Label(frame1, text="Product Name").grid(row=0, column=0, sticky=W)
     nameVar = StringVar()
     name = Entry(frame1, textvariable=nameVar)
     name.grid(row=0, column=1, sticky=W)
     
 
-    Label(frame1, text="Phone").grid(row=1, column=0, sticky=W)
+    Label(frame1, text="Price").grid(row=1, column=0, sticky=W)
     phoneVar= StringVar()
     phone= Entry(frame1, textvariable=phoneVar)
     phone.grid(row=1, column=1, sticky=W)
+    
+    Label(frame1, text="Quantity").grid(row=2, column=0, sticky=W)
+    phoneVar= StringVar()
+    phone= Entry(frame1, textvariable=phoneVar)
+    phone.grid(row=2, column=1, sticky=W)
 
     frame2 = Frame(win)       # Row of buttons
     frame2.pack()
@@ -84,7 +89,7 @@ def setSelect () :
     phonelist.sort()
     select.delete(0,END)
     for name,phone in phonelist :
-        select.insert (END, name + ' '*(space - len(name))+' |')
+        select.insert (END, name)
         #print (END, name)
 
 win = makeWindow()
