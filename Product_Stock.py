@@ -1,5 +1,5 @@
 from Tkinter import *
-from phone  import *
+from stock  import *
 #import tkFont
 #Git-HUB
 #helv36 = tkFont.Font(family="Helvetica",size=36,weight="bold")
@@ -8,38 +8,38 @@ def fun(xxx):
     return len(xxx[0])
 
 def maxlist():
-    return len(max(phonelist, key = fun)[0])
+    return len(max(product_stock, key = fun)[0])
 
 print maxlist()
 
 def writedata():
     f = open("phone.py", "w")
-    f.write("phonelist = " + str(phonelist))
+    f.write("product_stock = " + str(product_stock))
     f.close()
     
 def whichSelected () :
-    print phonelist[select.curselection()[0]][0]
-    print "At %s of %d" % (select.curselection(), len(phonelist))
+    print product_stock[select.curselection()[0]][0]
+    print "At %s of %d" % (select.curselection(), len(product_stock))
     print nameVar.get()
     return int(select.curselection()[0])
 
 def addEntry () :
-    phonelist.append ([nameVar.get(), phoneVar.get()])
+    product_stock.append ([nameVar.get(), phoneVar.get()])
     setSelect ()
     writedata()
 
 def updateEntry() :
-    phonelist[whichSelected()] = [nameVar.get(), phoneVar.get()]
+    product_stock[whichSelected()] = [nameVar.get(), phoneVar.get()]
     setSelect ()
     writedata()
 
 def deleteEntry() :
-    del phonelist[whichSelected()]
+    del product_stock[whichSelected()]
     setSelect ()
     writedata()
 
 def loadEntry  () :
-    name, phone = phonelist[whichSelected()]
+    name, phone = product_stock[whichSelected()]
     nameVar.set(name)
     phoneVar.set(phone)
 
@@ -81,9 +81,9 @@ def makeWindow () :
 
 def setSelect () :
     space = maxlist()
-    phonelist.sort()
+    product_stock.sort()
     select.delete(0,END)
-    for name,phone in phonelist :
+    for name,phone in product_stock :
         select.insert (END, name + ' '*(space - len(name))+' |')
         #print (END, name)
 
