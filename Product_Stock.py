@@ -8,38 +8,38 @@ def fun(xxx):
     return len(xxx[0])
 
 def maxlist():
-    return len(max(product_stock, key = fun)[0])
+    return len(max(product, key = fun)[0])
 
 print maxlist()
 
 def writedata():
     f = open("phone.py", "w")
-    f.write("product_stock = " + str(product_stock))
+    f.write("product = " + str(product))
     f.close()
     
 def whichSelected () :
-    print product_stock[select.curselection()[0]][0]
-    print "At %s of %d" % (select.curselection(), len(product_stock))
+    print product[select.curselection()[0]][0]
+    print "At %s of %d" % (select.curselection(), len(product))
     print nameVar.get()
     return int(select.curselection()[0])
 
 def addEntry () :
-    product_stock.append ([nameVar.get(), phoneVar.get()])
+    product.append ([nameVar.get(), phoneVar.get()])
     setSelect ()
     writedata()
 
 def updateEntry() :
-    product_stock[whichSelected()] = [nameVar.get(), phoneVar.get()]
+    product[whichSelected()] = [nameVar.get(), phoneVar.get()]
     setSelect ()
     writedata()
 
 def deleteEntry() :
-    del product_stock[whichSelected()]
+    del product[whichSelected()]
     setSelect ()
     writedata()
 
 def loadEntry  () :
-    name, phone = product_stock[whichSelected()]
+    name, phone = product[whichSelected()]
     nameVar.set(name)
     phoneVar.set(phone)
 
@@ -81,9 +81,9 @@ def makeWindow () :
 
 def setSelect () :
     space = maxlist()
-    product_stock.sort()
+    product.sort()
     select.delete(0,END)
-    for name,phone in product_stock :
+    for name,phone in product :
         select.insert (END, name + ' '*(space - len(name))+' |')
         #print (END, name)
 
