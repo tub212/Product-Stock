@@ -44,13 +44,13 @@ def loadEntry  () :
     productVar.set(product)
 
 def printEntry () :
-    print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    print "X Product Name      Price     Quantity X"
+    print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    print "X Product Name                Price     Quantity X"
     for i in productlist:
-        print "X  " + i[0] + " " *(18 - len(i[0])) + i[1] + \
+        print "X  " + i[0] + " " *(28 - len(i[0])) + i[1] + \
               " " * (10 - len(i[1])) + i[2] + " " * (7 - len(i[2])) + " X"
-    print "X                                      X"
-    print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    print "X                                                X"
+    print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 def makeWindow () :
     global nameVar, priceVar, productVar, select
@@ -78,7 +78,7 @@ def makeWindow () :
 
     frame2 = Frame(win)       # Row of buttons
     frame2.pack()
-    b1 = Button(frame2,text=" Add  ",command=addEntry)
+    b1 = Button(frame2,text=" Add ",command=addEntry)
     b2 = Button(frame2,text="Update",command=updateEntry)
     b3 = Button(frame2,text="Delete",command=deleteEntry)
     b4 = Button(frame2,text=" Load ",command=loadEntry)
