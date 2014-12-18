@@ -1,8 +1,7 @@
 from Tkinter import *
 from product  import *
-#import tkFont
 #Git-HUB
-#helv36 = tkFont.Font(family="Helvetica",size=36,weight="bold")
+
 
 def fun(xxx):
     return len(xxx[0])
@@ -10,7 +9,7 @@ def fun(xxx):
 def maxlist():
     return len(max(productlist, key = fun)[0])
 
-print maxlist()
+#print maxlist()
 
 def writedata():
     f = open("product.py", "w")
@@ -44,6 +43,15 @@ def loadEntry  () :
     priceVar.set(price)
     productVar.set(product)
 
+def printEntry () :
+    print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    print "X Product Name      Price     Quantity X"
+    for i in productlist:
+        print "X  " + i[0] + " " *(18 - len(i[0])) + i[1] + \
+              " " * (10 - len(i[1])) + i[2] + " " * (7 - len(i[2])) + " X"
+    print "X                                      X"
+    print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
 def makeWindow () :
     global nameVar, priceVar, productVar, select
     win = Tk()
@@ -74,8 +82,9 @@ def makeWindow () :
     b2 = Button(frame2,text="Update",command=updateEntry)
     b3 = Button(frame2,text="Delete",command=deleteEntry)
     b4 = Button(frame2,text=" Load ",command=loadEntry)
+    b5 = Button(frame2,text=" Print ",command=printEntry)
     b1.pack(side=LEFT); b2.pack(side=LEFT)
-    b3.pack(side=LEFT); b4.pack(side=LEFT)
+    b3.pack(side=LEFT); b4.pack(side=LEFT) ;b5.pack(side=LEFT)
 
     frame3 = Frame(win)       # select of names
     frame3.pack()
